@@ -19,10 +19,7 @@ cdp_diagnostico = TabularCPD(variable='Diagnóstico', variable_card=2,
 model.add_cpds(cdp_fiebre, cdp_congestion, cdp_diagnostico)
 
 # Verificar si la red bayesiana es válida
-if model.check_model() == True:
-    print("El modelo es valido\n")
-else:
-    print("El modelo no es valido\n")
+print(model.check_model(), "\n")
 
 # Hacer inferencia en la red bayesiana
 inference = VariableElimination(model)
