@@ -1,4 +1,6 @@
 #Use este en el documento
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 from pgmpy.models import BayesianNetwork
 from pgmpy.factors.discrete import TabularCPD
 from pgmpy.inference import VariableElimination
