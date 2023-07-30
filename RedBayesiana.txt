@@ -1,0 +1,17 @@
+Probabilidad de tener gripe dada una fiebre alta y congestión nasal presente
++----------------+--------------------+
+| Diagnóstico    |   phi(Diagnóstico) |
++================+====================+
+| Diagnóstico(0) |             0.1000 |
++----------------+--------------------+
+| Diagnóstico(1) |             0.9000 |
++----------------+--------------------+
+
+Probabilidad de tener resfriado dada una fiebre normal y congestión nasal ausente
++----------------+--------------------+
+| Diagnóstico    |   phi(Diagnóstico) |
++================+====================+
+| Diagnóstico(0) |             0.8000 |
++----------------+--------------------+
+| Diagnóstico(1) |             0.2000 |
++----------------+--------------------+
