@@ -32,25 +32,24 @@ inference = VariableElimination(model)
 # Manejo de excepciones
 try:
     # Se crea un archivo .txt
-    archivo = open("RedBayesiana.txt", "w", encoding="utf8")
+    with open("RedBayesiana.txt", 'w', encoding="utf8") as archivo:
+        # Calcular la probabilidad de tener gripe dada una fiebre alta y congestión nasal presente
+        print("Probabilidad de tener gripe dada una fiebre alta y congestión nasal presente")
+        prob_gripe = inference.query(variables=['Diagnóstico'], evidence={'Fiebre': 1, 'Congestión Nasal': 1})
+        print(prob_gripe, "\n")
+        # prob_gripe se vuelve un str para pasarlo a un archivo .txt
+        prob_gripe_str = str(prob_gripe)
+        archivo.write("Probabilidad de tener gripe dada una fiebre alta y congestión nasal presente\n")
+        archivo.write(prob_gripe_str)
 
-    # Calcular la probabilidad de tener gripe dada una fiebre alta y congestión nasal presente
-    print("Probabilidad de tener gripe dada una fiebre alta y congestión nasal presente")
-    prob_gripe = inference.query(variables=['Diagnóstico'], evidence={'Fiebre': 1, 'Congestión Nasal': 1})
-    print(prob_gripe, "\n")
-    # prob_gripe se vuelve un str para pasarlo a un archivo .txt
-    prob_gripe_str = str(prob_gripe)
-    archivo.write("Probabilidad de tener gripe dada una fiebre alta y congestión nasal presente\n")
-    archivo.write(prob_gripe_str)
-
-    # Calcular la probabilidad de tener resfriado dada una fiebre normal y congestión nasal ausente
-    print("Probabilidad de tener resfriado dada una fiebre normal y congestión nasal ausente")
-    prob_resfriado = inference.query(variables=['Diagnóstico'], evidence={'Fiebre': 0, 'Congestión Nasal': 0})
-    print(prob_resfriado)
-    # prob_resfriado se vuelve un str para pasarlo a un archivo .txt
-    prob_resfriado_str = str(prob_resfriado)
-    archivo.write("\n\nProbabilidad de tener resfriado dada una fiebre normal y congestión nasal ausente\n")
-    archivo.write(prob_resfriado_str)
+        # Calcular la probabilidad de tener resfriado dada una fiebre normal y congestión nasal ausente
+        print("Probabilidad de tener resfriado dada una fiebre normal y congestión nasal ausente")
+        prob_resfriado = inference.query(variables=['Diagnóstico'], evidence={'Fiebre': 0, 'Congestión Nasal': 0})
+        print(prob_resfriado)
+        # prob_resfriado se vuelve un str para pasarlo a un archivo .txt
+        prob_resfriado_str = str(prob_resfriado)
+        archivo.write("\n\nProbabilidad de tener resfriado dada una fiebre normal y congestión nasal ausente\n")
+        archivo.write(prob_resfriado_str)
 
 except Exception as e:
     print(f"Ocurrio un error: {e}, {type(e)}")
